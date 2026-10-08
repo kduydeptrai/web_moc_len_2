@@ -150,7 +150,6 @@
         .search-clear.show { display: block; }
         .search-clear:hover { color: var(--pink-dark); }
 
-        /* HEADER ACTIONS */
         .header-actions {
             display: flex;
             align-items: center;
@@ -519,7 +518,7 @@
         }
 
         /* ============================================
-           PATTERNS
+           PATTERNS ACCORDION
            ============================================ */
         .patterns {
             background: linear-gradient(180deg, var(--cream), var(--pink-light));
@@ -534,18 +533,25 @@
         .pattern-card {
             background: #fff;
             border-radius: 25px;
-            padding: 28px;
-            margin-bottom: 25px;
+            padding: 22px 26px;
+            margin-bottom: 20px;
             box-shadow: 0 5px 20px rgba(255, 182, 193, 0.25);
             border-left: 5px solid var(--pink-medium);
             transition: all 0.3s;
+        }
+
+        .pattern-card:hover {
+            box-shadow: 0 10px 30px rgba(255, 143, 163, 0.35);
+            transform: translateX(5px);
         }
 
         .pattern-header {
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-bottom: 15px;
+            cursor: pointer;
+            user-select: none;
+            padding: 4px 0;
         }
 
         .pattern-icon {
@@ -557,10 +563,23 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            transition: transform 0.3s;
         }
 
+        .pattern-card:hover .pattern-icon { transform: scale(1.08); }
+
         .pattern-icon i { color: #fff; font-size: 1.5rem; }
-        .pattern-header h3 { font-size: 1.15rem; color: var(--text-dark); }
+
+        .pattern-header-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .pattern-header h3 {
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            margin-bottom: 3px;
+        }
 
         .pattern-header .level {
             font-size: 0.72rem;
@@ -569,15 +588,57 @@
             padding: 3px 12px;
             border-radius: 50px;
             display: inline-block;
-            margin-top: 5px;
+            margin-top: 3px;
+        }
+
+        .pattern-arrow {
+            color: var(--pink-dark);
+            font-size: 1rem;
+            transition: transform 0.4s ease, background 0.3s;
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--pink-light);
+            border-radius: 50%;
+        }
+
+        .pattern-card.open .pattern-arrow {
+            transform: rotate(180deg);
+            background: var(--pink-soft);
+        }
+
+        .pattern-short {
+            color: #999;
+            font-size: 0.88rem;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        .pattern-detail {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.4s ease;
+            margin-top: 0;
+        }
+
+        .pattern-card.open .pattern-detail {
+            max-height: 2500px;
+            opacity: 1;
+            margin-top: 18px;
         }
 
         .pattern-content {
             background: var(--pink-light);
             border-radius: 15px;
             padding: 18px;
-            margin-top: 15px;
+            margin-top: 12px;
         }
+
+        .pattern-content:first-child { margin-top: 0; }
 
         .pattern-content h4 {
             color: var(--pink-dark);
@@ -750,7 +811,7 @@
         }
 
         /* ============================================
-           MODAL CHI TIẾT SẢN PHẨM
+           MODAL CHI TIẾT
            ============================================ */
         .modal-overlay {
             position: fixed;
@@ -767,10 +828,7 @@
             transition: opacity 0.3s;
         }
 
-        .modal-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
+        .modal-overlay.active { display: flex; opacity: 1; }
 
         .modal {
             background: #fff;
@@ -877,7 +935,6 @@
             margin-bottom: 20px;
         }
 
-        /* QUANTITY SELECTOR */
         .qty-selector {
             display: flex;
             align-items: center;
@@ -921,11 +978,6 @@
             color: #fff;
         }
 
-        .qty-control button:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-
         .qty-control input {
             width: 44px;
             text-align: center;
@@ -935,13 +987,6 @@
             font-weight: 700;
             font-size: 1rem;
             color: var(--text-dark);
-            -moz-appearance: textfield;
-        }
-
-        .qty-control input::-webkit-outer-spin-button,
-        .qty-control input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
         }
 
         .modal-actions {
@@ -975,7 +1020,6 @@
             box-shadow: 0 8px 25px rgba(255, 143, 163, 0.6);
         }
 
-        /* Modal pattern */
         .modal-pattern {
             grid-column: 1 / -1;
             padding: 30px 35px 40px;
@@ -1063,10 +1107,7 @@
             transition: all 0.3s;
         }
 
-        .cart-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
+        .cart-overlay.active { opacity: 1; visibility: visible; }
 
         .cart-sidebar {
             position: fixed;
@@ -1236,11 +1277,6 @@
             color: #fff;
         }
 
-        .cart-qty button:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-
         .cart-qty span {
             min-width: 28px;
             text-align: center;
@@ -1309,14 +1345,9 @@
             box-shadow: 0 5px 20px rgba(255, 143, 163, 0.4);
         }
 
-        .btn-checkout:hover:not(:disabled) {
+        .btn-checkout:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(255, 143, 163, 0.6);
-        }
-
-        .btn-checkout:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
         }
 
         .btn-clear-cart {
@@ -1354,10 +1385,7 @@
             overflow-y: auto;
         }
 
-        .checkout-modal.active {
-            display: flex;
-            opacity: 1;
-        }
+        .checkout-modal.active { display: flex; opacity: 1; }
 
         .checkout-box {
             background: #fff;
@@ -1413,9 +1441,7 @@
             transform: rotate(90deg);
         }
 
-        .checkout-body {
-            padding: 30px;
-        }
+        .checkout-body { padding: 30px; }
 
         .checkout-summary {
             background: var(--pink-light);
@@ -1447,10 +1473,7 @@
 
         .summary-item:last-of-type { border-bottom: none; }
 
-        .summary-item-name {
-            flex: 1;
-            margin-right: 10px;
-        }
+        .summary-item-name { flex: 1; margin-right: 10px; }
 
         .summary-item-qty {
             color: var(--pink-dark);
@@ -1496,9 +1519,7 @@
             gap: 8px;
         }
 
-        .form-group {
-            margin-bottom: 16px;
-        }
+        .form-group { margin-bottom: 16px; }
 
         .form-group label {
             display: block;
@@ -1508,9 +1529,7 @@
             margin-bottom: 6px;
         }
 
-        .form-group label .required {
-            color: var(--red);
-        }
+        .form-group label .required { color: var(--red); }
 
         .form-group input,
         .form-group textarea {
@@ -1592,8 +1611,6 @@
             text-align: center;
         }
 
-        .payment-option input:checked ~ label { color: var(--pink-dark); font-weight: 600; }
-
         .btn-submit-order {
             width: 100%;
             background: linear-gradient(135deg, var(--pink-medium), var(--pink-dark));
@@ -1619,7 +1636,6 @@
             box-shadow: 0 8px 25px rgba(255, 143, 163, 0.6);
         }
 
-        /* SUCCESS MODAL */
         .success-box {
             background: #fff;
             border-radius: 25px;
@@ -1724,7 +1740,6 @@
         /* ============================================
            RESPONSIVE
            ============================================ */
-
         @media (max-width: 1024px) {
             .hero h1 { font-size: 2.8rem; }
             .section-title h2 { font-size: 2.4rem; }
@@ -1747,12 +1762,7 @@
 
             .hamburger { display: flex; }
 
-            .cart-btn,
-            .hamburger {
-                width: 42px;
-                height: 42px;
-                font-size: 1.05rem;
-            }
+            .cart-btn, .hamburger { width: 42px; height: 42px; font-size: 1.05rem; }
 
             .search-wrapper {
                 order: 3;
@@ -1848,13 +1858,33 @@
                 min-height: 34px;
             }
 
+            /* PATTERNS */
             .patterns { padding: 30px 12px 55px; }
-            .pattern-card { padding: 20px; border-radius: 20px; margin-bottom: 15px; }
-            .pattern-icon { width: 48px; height: 48px; }
-            .pattern-icon i { font-size: 1.3rem; }
+
+            .pattern-card {
+                padding: 18px;
+                border-radius: 20px;
+                margin-bottom: 15px;
+            }
+
+            .pattern-card:hover { transform: none; }
+
+            .pattern-icon { width: 46px; height: 46px; }
+            .pattern-icon i { font-size: 1.25rem; }
+
             .pattern-header h3 { font-size: 1rem; }
+            .pattern-header .level { font-size: 0.68rem; }
+
+            .pattern-arrow {
+                width: 28px;
+                height: 28px;
+                font-size: 0.85rem;
+            }
+
+            .pattern-short { font-size: 0.82rem; }
             .pattern-content { padding: 14px; }
-            .pattern-content li { font-size: 0.87rem; }
+            .pattern-content h4 { font-size: 0.9rem; }
+            .pattern-content li { font-size: 0.85rem; padding-left: 22px; }
 
             .about { padding: 50px 18px; }
             .about p { font-size: 0.92rem; }
@@ -1877,19 +1907,12 @@
             }
 
             .modal-body { grid-template-columns: 1fr; }
-
-            .modal-img {
-                min-height: 240px;
-                border-radius: 25px 25px 0 0;
-            }
-
+            .modal-img { min-height: 240px; border-radius: 25px 25px 0 0; }
             .modal-info { padding: 25px 22px; }
             .modal-info h2 { font-size: 1.8rem; }
             .modal-info .modal-desc { font-size: 0.88rem; }
             .modal-price { font-size: 1.7rem; margin-bottom: 15px; }
-
             .qty-selector { justify-content: space-between; }
-
             .modal-pattern { padding: 22px 22px 30px; }
             .modal-pattern-header h3 { font-size: 1.4rem; }
             .modal-pattern-content { padding: 16px; }
@@ -1906,17 +1929,13 @@
 
             /* CART MOBILE */
             .cart-sidebar { width: 100%; max-width: 100%; }
-
             .cart-header { padding: 18px 20px; }
             .cart-header h2 { font-size: 1.5rem; }
-
             .cart-body { padding: 15px 18px; }
             .cart-footer { padding: 15px 18px 20px; }
-
             .cart-item-img { width: 70px; height: 70px; }
             .cart-item-name { font-size: 0.88rem; }
             .cart-item-price { font-size: 1.05rem; }
-
             .cart-total-price { font-size: 1.6rem; }
 
             /* CHECKOUT MOBILE */
@@ -1928,24 +1947,14 @@
                 animation: modalSlideUp 0.4s ease;
             }
 
-            .checkout-header {
-                padding: 20px 22px;
-                border-radius: 25px 25px 0 0;
-            }
-
+            .checkout-header { padding: 20px 22px; border-radius: 25px 25px 0 0; }
             .checkout-header h2 { font-size: 1.5rem; }
-
             .checkout-body { padding: 22px; }
-
             .checkout-summary { padding: 15px; }
             .checkout-summary h3 { font-size: 1.3rem; }
-
             .summary-total-price { font-size: 1.7rem; }
-
             .form-row { grid-template-columns: 1fr; }
-
             .checkout-form h3 { font-size: 1.3rem; }
-
             .success-box { padding: 35px 22px; }
             .success-box h2 { font-size: 1.9rem; }
             .success-icon { width: 75px; height: 75px; font-size: 2rem; }
@@ -1967,7 +1976,6 @@
             .logo .logo-text span { font-size: 0.5rem; letter-spacing: 1.5px; }
 
             .cart-btn, .hamburger { width: 40px; height: 40px; font-size: 1rem; }
-
             .cart-count { min-width: 20px; height: 20px; font-size: 0.65rem; }
 
             .hero { padding: 42px 15px; }
@@ -1986,12 +1994,13 @@
             .btn-add { font-size: 0.68rem; padding: 7px 8px; min-height: 32px; }
             .btn-add i { display: none; }
 
-            .pattern-card { padding: 16px 14px; }
+            .pattern-card { padding: 16px 15px; }
             .pattern-icon { width: 42px; height: 42px; }
             .pattern-icon i { font-size: 1.1rem; }
             .pattern-header h3 { font-size: 0.92rem; }
+            .pattern-header { gap: 12px; }
             .pattern-content { padding: 12px; }
-            .pattern-content li { font-size: 0.82rem; padding-left: 20px; }
+            .pattern-content li { font-size: 0.82rem; }
             .pattern-content h4 { font-size: 0.88rem; }
 
             .modal-img { min-height: 200px; }
@@ -1999,7 +2008,6 @@
             .modal-info h2 { font-size: 1.55rem; }
             .modal-price { font-size: 1.5rem; }
             .btn-modal-add { padding: 12px 20px; font-size: 0.88rem; }
-
             .qty-control button { width: 30px; height: 30px; font-size: 0.85rem; }
             .qty-control input { width: 36px; font-size: 0.9rem; }
 
@@ -2133,42 +2141,184 @@
                 <i class="fa-solid fa-scroll"></i>
                 <span></span>
             </div>
-            <p style="color: #999; margin-top: 10px; font-size: 0.9rem;">Bấm vào sản phẩm để xem công thức chi tiết <i class="fa-solid fa-seedling" style="color: var(--pink-dark);"></i></p>
+            <p style="color: #999; margin-top: 10px; font-size: 0.9rem;">Bấm vào từng công thức để xem chi tiết <i class="fa-solid fa-seedling" style="color: var(--pink-dark);"></i></p>
         </div>
 
         <div class="patterns-container">
+
+            <!-- Công thức 1 -->
             <div class="pattern-card">
-                <div class="pattern-header">
+                <div class="pattern-header" onclick="togglePatternCard(this)">
                     <div class="pattern-icon"><i class="fa-solid fa-spa"></i></div>
-                    <div>
+                    <div class="pattern-header-text">
                         <h3>Hoa Cúc Len Đơn Giản</h3>
-                        <span class="level"><i class="fa-solid fa-star"></i> Dễ</span>
+                        <span class="level"><i class="fa-solid fa-star"></i> Dễ - Cho người mới</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-down pattern-arrow"></i>
+                </div>
+                <p class="pattern-short">Bông hoa cúc nhỏ xinh để cài áo hoặc trang trí, chỉ mất 15 phút là xong!</p>
+                <div class="pattern-detail">
+                    <div class="pattern-content">
+                        <h4><i class="fa-solid fa-list-check"></i> Nguyên liệu cần chuẩn bị:</h4>
+                        <ul>
+                            <li>Len sợi cotton màu vàng và trắng</li>
+                            <li>Kim móc số 3.0mm</li>
+                            <li>Kéo, kim khâu len</li>
+                        </ul>
+                    </div>
+                    <div class="pattern-content">
+                        <h4><i class="fa-solid fa-hands"></i> Các bước thực hiện:</h4>
+                        <ul>
+                            <li><strong>Bước 1:</strong> Tạo vòng tròn ma thuật (magic ring) với len vàng</li>
+                            <li><strong>Bước 2:</strong> Móc 8 mũi đơn (sc) vào vòng tròn, kéo chặt</li>
+                            <li><strong>Bước 3:</strong> Móc 2 mũi đơn vào mỗi mũi = 16 mũi</li>
+                            <li><strong>Bước 4:</strong> Móc 1 mũi đơn, 2 mũi đơn vào mũi kế tiếp = 24 mũi</li>
+                            <li><strong>Bước 5:</strong> Đổi sang len trắng, móc 5 bính (ch), mũi kép (dc) vào mũi tiếp, 5 bính, mũi trượt (sl st) vào mũi kế</li>
+                            <li><strong>Bước 6:</strong> Lặp lại bước 5 cho đến hết vòng tròn để tạo cánh hoa</li>
+                            <li><strong>Bước 7:</strong> Cắt len, khâu giấu đầu chỉ</li>
+                        </ul>
+                    </div>
+                    <div class="pattern-content">
+                        <h4><i class="fa-solid fa-lightbulb"></i> Mẹo nhỏ:</h4>
+                        <ul>
+                            <li>Móc đều tay để cánh hoa đẹp hơn</li>
+                            <li>Có thể dùng len nhiều màu để làm bó hoa xinh</li>
+                            <li>Nếu muốn hoa to hơn, tăng thêm số vòng mũi đơn</li>
+                        </ul>
                     </div>
                 </div>
-                <p style="color: #999; font-size: 0.88rem;">Bông hoa cúc nhỏ xinh để cài áo hoặc trang trí, chỉ mất 15 phút!</p>
             </div>
 
+            <!-- Công thức 2 -->
             <div class="pattern-card">
-                <div class="pattern-header">
+                <div class="pattern-header" onclick="togglePatternCard(this)">
                     <div class="pattern-icon"><i class="fa-solid fa-shapes"></i></div>
-                    <div>
+                    <div class="pattern-header-text">
                         <h3>Gấu Bông Mini</h3>
                         <span class="level"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> Trung bình</span>
                     </div>
+                    <i class="fa-solid fa-chevron-down pattern-arrow"></i>
                 </div>
-                <p style="color: #999; font-size: 0.88rem;">Chú gấu nhỏ xinh để bàn hoặc làm quà tặng!</p>
+                <p class="pattern-short">Chú gấu nhỏ xinh để bàn hoặc làm quà tặng cực dễ thương!</p>
+                <div class="pattern-detail">
+                    <div class="pattern-content">
+                        <h4><i class="fa-solid fa-list-check"></i> Nguyên liệu cần chuẩn bị:</h4>
+                        <ul>
+                            <li>Len cotton màu nâu, trắng, đen</li>
+                            <li>Kim móc 2.5mm hoặc 3.0mm</li>
+                            <li>Bông gòn nhồi, kim khâu, mắt thú</li>
+                        </ul>
+                    </div>
+                    <div class="pattern-content">
+                        <h4><i class="fa-solid fa-hands"></i> Các bước thực hiện:</h4>
+                        <ul>
+                            <li><strong>PHẦN ĐẦU:</strong> Magic ring 6sc, tăng dần lên 36 mũi qua 4 vòng, sau đó giảm dần về 6 mũi, nhồi bông</li>
+                            <li><strong>PHẦN THÂN:</strong> Magic ring 6sc, tăng lên 30 mũi, móc 8 vòng đều, giảm dần, nhồi bông, khâu vào đầu</li>
+                            <li><strong>TAI (x2):</strong> Magic ring 6sc, tăng lên 12 mũi, móc 2 vòng đều, khâu vào đầu</li>
+                            <li><strong>TAY (x2):</strong> Magic ring 6sc, móc 5 vòng đều, nhồi nhẹ, khâu vào thân</li>
+                            <li><strong>CHÂN (x2):</strong> Magic ring 6sc, tăng lên 12 mũi, móc 3 vòng, khâu vào thân</li>
+                            <li><strong>MÕM:</strong> Dùng len trắng móc hình oval nhỏ, khâu vào mặt</li>
+                            <li><strong>HOÀN THIỆN:</strong> Gắn mắt thú, thêu mũi miệng bằng len đen</li>
+                        </ul>
+                    </div>
+                    <div class="pattern-content">
+                        <h4><i class="fa-solid fa-lightbulb"></i> Mẹo nhỏ:</h4>
+                        <ul>
+                            <li>Đánh dấu mũi đầu tiên bằng marker để không bị lệch</li>
+                            <li>Nhồi bông vừa phải để gấu tròn đẹp</li>
+                            <li>Khâu các bộ phận bằng kim khâu len để chắc chắn</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
+            <!-- Công thức 3 -->
             <div class="pattern-card">
-                <div class="pattern-header">
+                <div class="pattern-header" onclick="togglePatternCard(this)">
                     <div class="pattern-icon"><i class="fa-solid fa-bag-shopping"></i></div>
-                    <div>
+                    <div class="pattern-header-text">
                         <h3>Túi Móc Len Mini</h3>
                         <span class="level"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> Trung bình</span>
                     </div>
+                    <i class="fa-solid fa-chevron-down pattern-arrow"></i>
                 </div>
-                <p style="color: #999; font-size: 0.88rem;">Chiếc túi nhỏ xinh để đựng son, điện thoại khi đi chơi!</p>
+                <p class="pattern-short">Chiếc túi nhỏ xinh để đựng son, điện thoại khi đi chơi!</p>
+                <div class="pattern-detail">
+                    <div class="pattern-content">
+                        <h4><i class="fa-solid fa-list-check"></i> Nguyên liệu cần chuẩn bị:</h4>
+                        <ul>
+                            <li>Len cotton màu hồng pastel (hoặc màu bạn thích)</li>
+                            <li>Kim móc 3.5mm</li>
+                            <li>Dây đeo túi, khóa túi (nếu muốn)</li>
+                            <li>Vải lót (tùy chọn)</li>
+                        </ul>
+                    </div>
+                    <div class="pattern-content">
+                        <h4><i class="fa-solid fa-hands"></i> Các bước thực hiện:</h4>
+                        <ul>
+                            <li><strong>Bước 1:</strong> Móc 20 bính (ch) làm đáy túi</li>
+                            <li><strong>Bước 2:</strong> Móc mũi đơn (sc) dọc theo 2 bên và đáy = khoảng 40 mũi</li>
+                            <li><strong>Bước 3:</strong> Móc 15 vòng mũi đơn đều nhau để tạo thân túi</li>
+                            <li><strong>Bước 4:</strong> Đổi màu len (nếu muốn) móc thêm 3 vòng nữa</li>
+                            <li><strong>Bước 5:</strong> Móc viền túi: 1 vòng mũi đơn + 1 vòng mũi trượt</li>
+                            <li><strong>Bước 6:</strong> Làm quai túi: móc dây bính dài khoảng 100cm, khâu vào 2 bên túi</li>
+                            <li><strong>Bước 7:</strong> Trang trí thêm hoa len hoặc nơ xinh</li>
+                        </ul>
+                    </div>
+                    <div class="pattern-content">
+                        <h4><i class="fa-solid fa-lightbulb"></i> Mẹo nhỏ:</h4>
+                        <ul>
+                            <li>Dùng len cotton để túi đứng form hơn</li>
+                            <li>Có thể lót vải bên trong để túi chắc chắn</li>
+                            <li>Trang trí thêm charm, nơ để túi thêm xinh</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+
+            <!-- Công thức 4 -->
+            <div class="pattern-card">
+                <div class="pattern-header" onclick="togglePatternCard(this)">
+                    <div class="pattern-icon"><i class="fa-solid fa-heart"></i></div>
+                    <div class="pattern-header-text">
+                        <h3>Móc Khóa Dâu Tây</h3>
+                        <span class="level"><i class="fa-solid fa-star"></i> Dễ - Cho người mới</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-down pattern-arrow"></i>
+                </div>
+                <p class="pattern-short">Móc khóa dâu tây nhỏ xinh, chỉ mất 20 phút là hoàn thành!</p>
+                <div class="pattern-detail">
+                    <div class="pattern-content">
+                        <h4><i class="fa-solid fa-list-check"></i> Nguyên liệu cần chuẩn bị:</h4>
+                        <ul>
+                            <li>Len cotton màu đỏ, xanh lá</li>
+                            <li>Kim móc 2.5mm</li>
+                            <li>Móc khóa, bông gòn nhồi</li>
+                        </ul>
+                    </div>
+                    <div class="pattern-content">
+                        <h4><i class="fa-solid fa-hands"></i> Các bước thực hiện:</h4>
+                        <ul>
+                            <li><strong>Bước 1:</strong> Magic ring 6sc với len đỏ</li>
+                            <li><strong>Bước 2:</strong> Tăng lên 12 mũi, rồi 18 mũi</li>
+                            <li><strong>Bước 3:</strong> Móc 2 vòng đều 18 mũi</li>
+                            <li><strong>Bước 4:</strong> Giảm dần về 6 mũi, nhồi bông gòn</li>
+                            <li><strong>Bước 5:</strong> Khâu kín lại</li>
+                            <li><strong>Bước 6:</strong> Dùng len xanh móc 5 bính, mũi trượt tạo lá, khâu lên đỉnh dâu</li>
+                            <li><strong>Bước 7:</strong> Gắn móc khóa vào</li>
+                        </ul>
+                    </div>
+                    <div class="pattern-content">
+                        <h4><i class="fa-solid fa-lightbulb"></i> Mẹo nhỏ:</h4>
+                        <ul>
+                            <li>Có thể thêu thêm hạt trắng lên dâu cho sinh động</li>
+                            <li>Làm nhiều quả dâu để làm charm điện thoại</li>
+                            <li>Dùng len acrylic để sản phẩm bền màu hơn</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -2600,6 +2750,24 @@
         });
 
         /* =========================================================
+           PATTERN ACCORDION
+           ========================================================= */
+        function togglePatternCard(header) {
+            const card = header.closest('.pattern-card');
+            if (!card) return;
+
+            const isOpen = card.classList.contains('open');
+
+            // Đóng tất cả các card khác (accordion - chỉ 1 mở)
+            document.querySelectorAll('.pattern-card.open').forEach(c => {
+                if (c !== card) c.classList.remove('open');
+            });
+
+            // Toggle card hiện tại
+            card.classList.toggle('open', !isOpen);
+        }
+
+        /* =========================================================
            MODAL CHI TIẾT SẢN PHẨM
            ========================================================= */
         const modalOverlay = document.getElementById('modalOverlay');
@@ -2698,7 +2866,7 @@
         });
 
         /* =========================================================
-           GIỎ HÀNG - localStorage
+           GIỎ HÀNG
            ========================================================= */
         const CART_KEY = 'hmb_cart_v1';
         let cart = [];
@@ -2979,11 +3147,17 @@
                 return;
             }
 
-            // Tạo mã đơn hàng
             const orderCode = 'HMB' + Date.now().toString().slice(-6);
+            const orderSummary = cart.map(item => `${item.name} x${item.qty}`).join(', ');
+            const total = getCartTotal();
 
-            // Ở đây thực tế sẽ gửi lên server. Demo: hiển thị thành công.
             showSuccess(orderCode, name, phone, address, payment);
+
+            console.log('📦 Đơn hàng mới:', {
+                orderCode, name, phone, address, payment,
+                items: orderSummary,
+                total: total
+            });
         }
 
         function showSuccess(orderCode, name, phone, address, payment) {
@@ -3010,17 +3184,10 @@
                 </div>
             `;
 
-            // Xóa giỏ hàng
             cart = [];
             saveCart();
             updateCartCount();
             renderCart();
-
-            // Log đơn hàng (demo)
-            console.log('📦 Đơn hàng mới:', {
-                orderCode, name, phone, address, payment,
-                items: JSON.parse(localStorage.getItem(CART_KEY) || '[]')
-            });
         }
 
         function finishOrder() {
