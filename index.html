@@ -1,0 +1,3110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#FFB6C1">
+    <title>HMB Agency - Đồ Handmade Móc Len</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --pink-light: #FFF0F5;
+            --pink-soft: #FFD1DC;
+            --pink-medium: #FFB6C1;
+            --pink-dark: #FF8FA3;
+            --cream: #FFF8F0;
+            --text-dark: #6B4E4E;
+            --green: #7DB87D;
+            --red: #FF6B8B;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--pink-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        body.no-scroll { overflow: hidden; }
+
+        img { max-width: 100%; height: auto; }
+
+        /* ============================================
+           HEADER
+           ============================================ */
+        header {
+            background: linear-gradient(135deg, var(--pink-soft), var(--pink-medium));
+            padding: 15px 0;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            position: relative;
+            gap: 15px;
+        }
+
+        .logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(255, 143, 163, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .logo i { font-size: 1.6rem; }
+
+        .logo .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo .logo-text span {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* SEARCH */
+        .search-wrapper {
+            flex: 1;
+            max-width: 380px;
+            position: relative;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50px;
+            padding: 8px 18px;
+            box-shadow: 0 3px 12px rgba(255, 143, 163, 0.2);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .search-box:focus-within {
+            border-color: var(--pink-dark);
+            box-shadow: 0 5px 18px rgba(255, 143, 163, 0.4);
+        }
+
+        .search-box i {
+            color: var(--pink-dark);
+            font-size: 0.95rem;
+            margin-right: 10px;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            min-width: 0;
+        }
+
+        .search-box input::placeholder { color: #c9a0a0; }
+
+        .search-clear {
+            background: none;
+            border: none;
+            color: #c9a0a0;
+            cursor: pointer;
+            padding: 4px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .search-clear.show { display: block; }
+        .search-clear:hover { color: var(--pink-dark); }
+
+        /* HEADER ACTIONS */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .cart-btn {
+            background: rgba(255, 255, 255, 0.25);
+            border: none;
+            color: #fff;
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .cart-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: var(--red);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            min-width: 22px;
+            height: 22px;
+            padding: 0 6px;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--pink-medium);
+            transform: scale(0);
+            transition: transform 0.3s;
+        }
+
+        .cart-count.show { transform: scale(1); }
+
+        .hamburger {
+            display: none;
+            background: rgba(255, 255, 255, 0.25);
+            border: none;
+            color: #fff;
+            font-size: 1.4rem;
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hamburger:hover { background: rgba(255, 255, 255, 0.4); }
+        .hamburger.active i::before { content: '\f00d'; }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s;
+            position: relative;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after { width: 100%; }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            background: linear-gradient(135deg, var(--pink-light) 0%, var(--cream) 50%, var(--pink-soft) 100%);
+            padding: 70px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '\f4d4';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 400;
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.1;
+            top: 20px;
+            left: 50px;
+            transform: rotate(-20deg);
+            color: var(--pink-dark);
+        }
+
+        .hero::after {
+            content: '\f06c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 400;
+            position: absolute;
+            font-size: 6rem;
+            opacity: 0.1;
+            bottom: 20px;
+            right: 80px;
+            transform: rotate(15deg);
+            color: var(--pink-dark);
+        }
+
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.2rem;
+            color: var(--pink-dark);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--pink-medium), var(--pink-dark));
+            color: #fff;
+            padding: 14px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(255, 143, 163, 0.4);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-btn i { margin-left: 8px; }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 143, 163, 0.6);
+        }
+
+        /* SECTION TITLES */
+        .section-title {
+            text-align: center;
+            padding: 50px 20px 25px;
+        }
+
+        .section-title h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.6rem;
+            color: var(--pink-dark);
+            margin-bottom: 10px;
+        }
+
+        .section-title .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .section-title .divider span {
+            height: 2px;
+            width: 60px;
+            background: var(--pink-medium);
+        }
+
+        .section-title .divider i {
+            color: var(--pink-medium);
+            font-size: 1.2rem;
+        }
+
+        /* ============================================
+           PRODUCTS
+           ============================================ */
+        .products {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            padding: 20px 0 60px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(255, 182, 193, 0.3);
+            transition: all 0.4s;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(255, 143, 163, 0.4);
+        }
+
+        .product-img {
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+            background: var(--pink-light);
+            flex-shrink: 0;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-img img { transform: scale(1.08); }
+
+        .product-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 60%, rgba(255, 143, 163, 0.15));
+            pointer-events: none;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--pink-dark);
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            z-index: 2;
+            box-shadow: 0 3px 10px rgba(255, 143, 163, 0.5);
+        }
+
+        .product-badge.hot { background: linear-gradient(135deg, #FF6B8B, #FF4567); }
+
+        .product-info {
+            padding: 18px 20px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-info h3 {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .product-info p {
+            font-size: 0.82rem;
+            color: #999;
+            margin-bottom: 12px;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .product-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .product-price {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.35rem;
+            color: var(--pink-dark);
+            font-weight: 700;
+        }
+
+        .btn-add {
+            background: var(--pink-soft);
+            color: var(--pink-dark);
+            border: none;
+            padding: 9px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            font-size: 0.78rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+            min-height: 38px;
+        }
+
+        .btn-add:hover {
+            background: var(--pink-dark);
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .no-results i {
+            font-size: 3rem;
+            color: var(--pink-medium);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .no-results h3 {
+            font-size: 1.3rem;
+            color: var(--pink-dark);
+            margin-bottom: 10px;
+        }
+
+        /* ============================================
+           PATTERNS
+           ============================================ */
+        .patterns {
+            background: linear-gradient(180deg, var(--cream), var(--pink-light));
+            padding: 40px 20px 80px;
+        }
+
+        .patterns-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pattern-card {
+            background: #fff;
+            border-radius: 25px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(255, 182, 193, 0.25);
+            border-left: 5px solid var(--pink-medium);
+            transition: all 0.3s;
+        }
+
+        .pattern-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .pattern-icon {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--pink-soft), var(--pink-medium));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .pattern-icon i { color: #fff; font-size: 1.5rem; }
+        .pattern-header h3 { font-size: 1.15rem; color: var(--text-dark); }
+
+        .pattern-header .level {
+            font-size: 0.72rem;
+            color: var(--pink-dark);
+            background: var(--pink-light);
+            padding: 3px 12px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .pattern-content {
+            background: var(--pink-light);
+            border-radius: 15px;
+            padding: 18px;
+            margin-top: 15px;
+        }
+
+        .pattern-content h4 {
+            color: var(--pink-dark);
+            margin-bottom: 10px;
+            font-size: 0.98rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pattern-content ul { list-style: none; padding: 0; }
+
+        .pattern-content li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+            font-size: 0.92rem;
+            line-height: 1.55;
+            color: #777;
+        }
+
+        .pattern-content li::before {
+            content: '\f005';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            font-size: 0.7rem;
+            color: var(--pink-dark);
+            top: 11px;
+        }
+
+        /* ============================================
+           ABOUT
+           ============================================ */
+        .about {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 70px 20px;
+            text-align: center;
+        }
+
+        .about p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #888;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .about .hearts {
+            font-size: 1.4rem;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            color: var(--pink-dark);
+            flex-wrap: wrap;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            background: linear-gradient(135deg, var(--pink-medium), var(--pink-dark));
+            color: #fff;
+            padding: 50px 20px 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .footer-col h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.7rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        .footer-col p {
+            opacity: 0.85;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-contact a {
+            color: #fff;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            transition: all 0.3s;
+            word-break: break-word;
+        }
+
+        .footer-contact a:hover { opacity: 1; transform: translateX(5px); }
+
+        .footer-contact i {
+            width: 36px;
+            height: 36px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .footer-contact a:hover i { background: #fff; color: var(--pink-dark); }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .footer-social a {
+            width: 44px;
+            height: 44px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: #fff;
+            color: var(--pink-dark);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* ============================================
+           MODAL CHI TIẾT SẢN PHẨM
+           ============================================ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(107, 78, 78, 0.6);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: 25px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(255, 143, 163, 0.5);
+            animation: modalIn 0.4s ease;
+        }
+
+        @keyframes modalIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #fff;
+            border: none;
+            color: var(--pink-dark);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: var(--pink-dark);
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .modal-img {
+            position: relative;
+            background: var(--pink-light);
+            min-height: 350px;
+            overflow: hidden;
+            border-radius: 25px 0 0 25px;
+        }
+
+        .modal-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .modal-info {
+            padding: 40px 35px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-info .modal-badge {
+            display: inline-block;
+            background: var(--pink-soft);
+            color: var(--pink-dark);
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            align-self: flex-start;
+        }
+
+        .modal-info h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--pink-dark);
+            margin-bottom: 12px;
+            line-height: 1.1;
+        }
+
+        .modal-info .modal-desc {
+            font-size: 0.95rem;
+            color: #888;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .modal-price {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: var(--pink-dark);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* QUANTITY SELECTOR */
+        .qty-selector {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .qty-selector label {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .qty-control {
+            display: inline-flex;
+            align-items: center;
+            background: var(--pink-light);
+            border-radius: 50px;
+            padding: 4px;
+            border: 2px solid var(--pink-soft);
+        }
+
+        .qty-control button {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: none;
+            background: #fff;
+            color: var(--pink-dark);
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .qty-control button:hover {
+            background: var(--pink-dark);
+            color: #fff;
+        }
+
+        .qty-control button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .qty-control input {
+            width: 44px;
+            text-align: center;
+            border: none;
+            background: transparent;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-dark);
+            -moz-appearance: textfield;
+        }
+
+        .qty-control input::-webkit-outer-spin-button,
+        .qty-control input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-modal-add {
+            flex: 1;
+            min-width: 160px;
+            background: linear-gradient(135deg, var(--pink-medium), var(--pink-dark));
+            color: #fff;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 5px 20px rgba(255, 143, 163, 0.4);
+        }
+
+        .btn-modal-add:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 143, 163, 0.6);
+        }
+
+        /* Modal pattern */
+        .modal-pattern {
+            grid-column: 1 / -1;
+            padding: 30px 35px 40px;
+            background: linear-gradient(180deg, var(--pink-light), #fff);
+            border-top: 2px dashed var(--pink-soft);
+        }
+
+        .modal-pattern-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .modal-pattern-header i {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--pink-soft), var(--pink-medium));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .modal-pattern-header h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.7rem;
+            color: var(--pink-dark);
+        }
+
+        .modal-pattern-content {
+            background: #fff;
+            border-radius: 18px;
+            padding: 22px;
+            box-shadow: 0 3px 15px rgba(255, 182, 193, 0.2);
+        }
+
+        .modal-pattern-content h4 {
+            color: var(--pink-dark);
+            margin: 18px 0 10px;
+            font-size: 0.98rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-pattern-content h4:first-child { margin-top: 0; }
+
+        .modal-pattern-content ul { list-style: none; padding: 0; }
+
+        .modal-pattern-content li {
+            padding: 7px 0 7px 24px;
+            position: relative;
+            font-size: 0.9rem;
+            line-height: 1.55;
+            color: #777;
+        }
+
+        .modal-pattern-content li::before {
+            content: '\f005';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            font-size: 0.68rem;
+            color: var(--pink-dark);
+            top: 10px;
+        }
+
+        /* ============================================
+           CART SIDEBAR
+           ============================================ */
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(107, 78, 78, 0.5);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 420px;
+            max-width: 100%;
+            height: 100vh;
+            background: #fff;
+            z-index: 1001;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: -10px 0 40px rgba(255, 143, 163, 0.3);
+        }
+
+        .cart-sidebar.active { transform: translateX(0); }
+
+        .cart-header {
+            padding: 22px 25px;
+            background: linear-gradient(135deg, var(--pink-soft), var(--pink-medium));
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .cart-header h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart-close {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            border: none;
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .cart-close:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: rotate(90deg);
+        }
+
+        .cart-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 25px;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .cart-empty i {
+            font-size: 4rem;
+            color: var(--pink-soft);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .cart-empty h3 {
+            font-size: 1.2rem;
+            color: var(--pink-dark);
+            margin-bottom: 8px;
+        }
+
+        .cart-empty p { font-size: 0.9rem; }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px dashed var(--pink-soft);
+        }
+
+        .cart-item:last-child { border-bottom: none; }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: var(--pink-light);
+        }
+
+        .cart-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .cart-item-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .cart-item-price {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.15rem;
+            color: var(--pink-dark);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .cart-qty {
+            display: inline-flex;
+            align-items: center;
+            background: var(--pink-light);
+            border-radius: 50px;
+            padding: 3px;
+            border: 2px solid var(--pink-soft);
+        }
+
+        .cart-qty button {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: none;
+            background: #fff;
+            color: var(--pink-dark);
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .cart-qty button:hover {
+            background: var(--pink-dark);
+            color: #fff;
+        }
+
+        .cart-qty button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .cart-qty span {
+            min-width: 28px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #c9a0a0;
+            cursor: pointer;
+            font-size: 0.95rem;
+            padding: 6px;
+            transition: color 0.2s;
+        }
+
+        .cart-item-remove:hover { color: var(--red); }
+
+        .cart-footer {
+            padding: 20px 25px 25px;
+            border-top: 2px dashed var(--pink-soft);
+            background: var(--pink-light);
+            flex-shrink: 0;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--pink-soft);
+        }
+
+        .cart-total-label {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .cart-total-price {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--pink-dark);
+            font-weight: 700;
+        }
+
+        .btn-checkout {
+            width: 100%;
+            background: linear-gradient(135deg, var(--pink-medium), var(--pink-dark));
+            color: #fff;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 50px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 5px 20px rgba(255, 143, 163, 0.4);
+        }
+
+        .btn-checkout:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 143, 163, 0.6);
+        }
+
+        .btn-checkout:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-clear-cart {
+            width: 100%;
+            background: none;
+            border: none;
+            color: #c9a0a0;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            padding: 10px;
+            margin-top: 8px;
+            transition: color 0.2s;
+        }
+
+        .btn-clear-cart:hover { color: var(--red); }
+
+        /* ============================================
+           CHECKOUT MODAL
+           ============================================ */
+        .checkout-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(107, 78, 78, 0.65);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 1100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            overflow-y: auto;
+        }
+
+        .checkout-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .checkout-box {
+            background: #fff;
+            border-radius: 25px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 92vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(255, 143, 163, 0.5);
+            animation: modalIn 0.4s ease;
+            margin: auto;
+        }
+
+        .checkout-header {
+            background: linear-gradient(135deg, var(--pink-soft), var(--pink-medium));
+            color: #fff;
+            padding: 25px 30px;
+            border-radius: 25px 25px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 5;
+        }
+
+        .checkout-header h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkout-close {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            border: none;
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .checkout-close:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: rotate(90deg);
+        }
+
+        .checkout-body {
+            padding: 30px;
+        }
+
+        .checkout-summary {
+            background: var(--pink-light);
+            border-radius: 18px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 2px dashed var(--pink-soft);
+        }
+
+        .checkout-summary h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: var(--pink-dark);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            border-bottom: 1px dashed rgba(255, 182, 193, 0.6);
+        }
+
+        .summary-item:last-of-type { border-bottom: none; }
+
+        .summary-item-name {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .summary-item-qty {
+            color: var(--pink-dark);
+            font-weight: 600;
+            margin-right: 12px;
+        }
+
+        .summary-item-price {
+            font-weight: 600;
+            color: var(--text-dark);
+            white-space: nowrap;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            margin-top: 10px;
+            border-top: 2px solid var(--pink-soft);
+        }
+
+        .summary-total-label {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .summary-total-price {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: var(--pink-dark);
+            font-weight: 700;
+        }
+
+        .checkout-form h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: var(--pink-dark);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.88rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .form-group label .required {
+            color: var(--red);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--pink-soft);
+            border-radius: 12px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.92rem;
+            color: var(--text-dark);
+            transition: all 0.3s;
+            background: #fff;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--pink-dark);
+            box-shadow: 0 0 0 4px rgba(255, 143, 163, 0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            padding: 14px 16px;
+            border: 2px solid var(--pink-soft);
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #fff;
+        }
+
+        .payment-option:hover {
+            border-color: var(--pink-medium);
+            background: var(--pink-light);
+        }
+
+        .payment-option input {
+            margin-right: 12px;
+            accent-color: var(--pink-dark);
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .payment-option label {
+            flex: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .payment-option label i {
+            color: var(--pink-dark);
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .payment-option input:checked ~ label { color: var(--pink-dark); font-weight: 600; }
+
+        .btn-submit-order {
+            width: 100%;
+            background: linear-gradient(135deg, var(--pink-medium), var(--pink-dark));
+            color: #fff;
+            border: none;
+            padding: 16px 25px;
+            border-radius: 50px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 5px 20px rgba(255, 143, 163, 0.4);
+            margin-top: 20px;
+        }
+
+        .btn-submit-order:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 143, 163, 0.6);
+        }
+
+        /* SUCCESS MODAL */
+        .success-box {
+            background: #fff;
+            border-radius: 25px;
+            max-width: 480px;
+            width: 100%;
+            padding: 45px 30px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(255, 143, 163, 0.5);
+            animation: modalIn 0.4s ease;
+            margin: auto;
+        }
+
+        .success-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--pink-soft), var(--pink-medium));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 22px;
+            font-size: 2.5rem;
+            color: #fff;
+            animation: pop 0.5s ease;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0); }
+            60% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        .success-box h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--pink-dark);
+            margin-bottom: 12px;
+        }
+
+        .success-box p {
+            font-size: 0.95rem;
+            color: #888;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .success-box .order-code {
+            display: inline-block;
+            background: var(--pink-light);
+            color: var(--pink-dark);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            margin: 15px 0 20px;
+            font-size: 0.95rem;
+        }
+
+        .btn-success-close {
+            background: linear-gradient(135deg, var(--pink-medium), var(--pink-dark));
+            color: #fff;
+            border: none;
+            padding: 13px 35px;
+            border-radius: 50px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(255, 143, 163, 0.4);
+        }
+
+        .btn-success-close:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 143, 163, 0.6);
+        }
+
+        /* ============================================
+           TOAST
+           ============================================ */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--pink-dark);
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(255, 143, 163, 0.5);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s;
+            z-index: 1200;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: calc(100% - 30px);
+        }
+
+        .toast.show { transform: translateY(0); opacity: 1; }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 2.8rem; }
+            .section-title h2 { font-size: 2.4rem; }
+            .product-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+            .search-wrapper { max-width: 280px; }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 12px 0; }
+
+            .header-content {
+                flex-wrap: wrap;
+                padding: 0 15px;
+                gap: 10px;
+            }
+
+            .logo { font-size: 1.5rem; }
+            .logo i { font-size: 1.4rem; }
+            .logo .logo-text span { font-size: 0.55rem; letter-spacing: 2px; }
+
+            .hamburger { display: flex; }
+
+            .cart-btn,
+            .hamburger {
+                width: 42px;
+                height: 42px;
+                font-size: 1.05rem;
+            }
+
+            .search-wrapper {
+                order: 3;
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+
+            .search-box { padding: 7px 15px; }
+            .search-box input { font-size: 0.85rem; }
+
+            nav {
+                position: absolute;
+                top: calc(100% + 12px);
+                right: 15px;
+                left: 15px;
+                background: linear-gradient(135deg, var(--pink-medium), var(--pink-dark));
+                border-radius: 20px;
+                padding: 0 20px;
+                max-height: 0;
+                overflow: hidden;
+                transition: all 0.4s ease;
+                box-shadow: 0 10px 30px rgba(255, 143, 163, 0.4);
+                z-index: 99;
+            }
+
+            nav.open { max-height: 300px; padding: 15px 20px; }
+            nav ul { flex-direction: column; gap: 0; }
+            nav ul li { border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+            nav ul li:last-child { border-bottom: none; }
+            nav a { display: block; padding: 14px 0; font-size: 1rem; text-align: center; }
+            nav a::after { display: none; }
+
+            .hero { padding: 50px 18px; }
+            .hero::before { font-size: 5rem; top: 10px; left: 10px; }
+            .hero::after { font-size: 4rem; bottom: 10px; right: 20px; }
+            .hero h1 { font-size: 2.2rem; line-height: 1.2; }
+            .hero p { font-size: 0.92rem; margin-bottom: 22px; }
+            .hero-btn { padding: 12px 28px; font-size: 0.92rem; }
+
+            .section-title { padding: 38px 15px 20px; }
+            .section-title h2 { font-size: 2rem; }
+            .section-title .divider span { width: 40px; }
+
+            /* 2 SẢN PHẨM 1 HÀNG */
+            .products { padding: 12px; }
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                padding: 15px 0 45px;
+            }
+
+            .product-card { border-radius: 18px; }
+            .product-card:hover { transform: translateY(-4px); }
+
+            .product-img { height: 140px; }
+
+            .product-badge {
+                top: 8px;
+                left: 8px;
+                padding: 4px 10px;
+                font-size: 0.6rem;
+            }
+
+            .product-info { padding: 12px 12px 14px; }
+            .product-info h3 { font-size: 0.85rem; margin-bottom: 4px; }
+            .product-info p {
+                font-size: 0.7rem;
+                margin-bottom: 8px;
+                line-height: 1.4;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .product-bottom {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 6px;
+            }
+
+            .product-price {
+                font-size: 1.05rem;
+                text-align: center;
+                line-height: 1;
+            }
+
+            .btn-add {
+                width: 100%;
+                justify-content: center;
+                padding: 8px 10px;
+                font-size: 0.72rem;
+                min-height: 34px;
+            }
+
+            .patterns { padding: 30px 12px 55px; }
+            .pattern-card { padding: 20px; border-radius: 20px; margin-bottom: 15px; }
+            .pattern-icon { width: 48px; height: 48px; }
+            .pattern-icon i { font-size: 1.3rem; }
+            .pattern-header h3 { font-size: 1rem; }
+            .pattern-content { padding: 14px; }
+            .pattern-content li { font-size: 0.87rem; }
+
+            .about { padding: 50px 18px; }
+            .about p { font-size: 0.92rem; }
+
+            footer { padding: 40px 15px 25px; }
+            .footer-content { gap: 30px; grid-template-columns: 1fr; }
+
+            /* MODAL MOBILE */
+            .modal-overlay { padding: 0; align-items: flex-end; }
+
+            .modal {
+                border-radius: 25px 25px 0 0;
+                max-height: 94vh;
+                animation: modalSlideUp 0.4s ease;
+            }
+
+            @keyframes modalSlideUp {
+                from { transform: translateY(100%); }
+                to { transform: translateY(0); }
+            }
+
+            .modal-body { grid-template-columns: 1fr; }
+
+            .modal-img {
+                min-height: 240px;
+                border-radius: 25px 25px 0 0;
+            }
+
+            .modal-info { padding: 25px 22px; }
+            .modal-info h2 { font-size: 1.8rem; }
+            .modal-info .modal-desc { font-size: 0.88rem; }
+            .modal-price { font-size: 1.7rem; margin-bottom: 15px; }
+
+            .qty-selector { justify-content: space-between; }
+
+            .modal-pattern { padding: 22px 22px 30px; }
+            .modal-pattern-header h3 { font-size: 1.4rem; }
+            .modal-pattern-content { padding: 16px; }
+            .modal-pattern-content li { font-size: 0.85rem; }
+            .modal-pattern-content h4 { font-size: 0.92rem; }
+
+            .modal-close {
+                top: 12px;
+                right: 12px;
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+
+            /* CART MOBILE */
+            .cart-sidebar { width: 100%; max-width: 100%; }
+
+            .cart-header { padding: 18px 20px; }
+            .cart-header h2 { font-size: 1.5rem; }
+
+            .cart-body { padding: 15px 18px; }
+            .cart-footer { padding: 15px 18px 20px; }
+
+            .cart-item-img { width: 70px; height: 70px; }
+            .cart-item-name { font-size: 0.88rem; }
+            .cart-item-price { font-size: 1.05rem; }
+
+            .cart-total-price { font-size: 1.6rem; }
+
+            /* CHECKOUT MOBILE */
+            .checkout-modal { padding: 0; align-items: flex-end; }
+
+            .checkout-box {
+                border-radius: 25px 25px 0 0;
+                max-height: 94vh;
+                animation: modalSlideUp 0.4s ease;
+            }
+
+            .checkout-header {
+                padding: 20px 22px;
+                border-radius: 25px 25px 0 0;
+            }
+
+            .checkout-header h2 { font-size: 1.5rem; }
+
+            .checkout-body { padding: 22px; }
+
+            .checkout-summary { padding: 15px; }
+            .checkout-summary h3 { font-size: 1.3rem; }
+
+            .summary-total-price { font-size: 1.7rem; }
+
+            .form-row { grid-template-columns: 1fr; }
+
+            .checkout-form h3 { font-size: 1.3rem; }
+
+            .success-box { padding: 35px 22px; }
+            .success-box h2 { font-size: 1.9rem; }
+            .success-icon { width: 75px; height: 75px; font-size: 2rem; }
+
+            .toast {
+                left: 15px;
+                right: 15px;
+                bottom: 20px;
+                justify-content: center;
+                font-size: 0.88rem;
+                padding: 13px 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content { padding: 0 12px; }
+            .logo { font-size: 1.3rem; gap: 7px; }
+            .logo i { font-size: 1.2rem; }
+            .logo .logo-text span { font-size: 0.5rem; letter-spacing: 1.5px; }
+
+            .cart-btn, .hamburger { width: 40px; height: 40px; font-size: 1rem; }
+
+            .cart-count { min-width: 20px; height: 20px; font-size: 0.65rem; }
+
+            .hero { padding: 42px 15px; }
+            .hero h1 { font-size: 1.85rem; }
+            .hero p { font-size: 0.85rem; }
+            .hero-btn { padding: 11px 24px; font-size: 0.85rem; }
+
+            .section-title h2 { font-size: 1.7rem; }
+
+            .product-grid { gap: 10px; padding: 12px 0 40px; }
+            .product-img { height: 120px; }
+            .product-info { padding: 10px 10px 12px; }
+            .product-info h3 { font-size: 0.78rem; }
+            .product-info p { font-size: 0.65rem; -webkit-line-clamp: 2; }
+            .product-price { font-size: 0.95rem; }
+            .btn-add { font-size: 0.68rem; padding: 7px 8px; min-height: 32px; }
+            .btn-add i { display: none; }
+
+            .pattern-card { padding: 16px 14px; }
+            .pattern-icon { width: 42px; height: 42px; }
+            .pattern-icon i { font-size: 1.1rem; }
+            .pattern-header h3 { font-size: 0.92rem; }
+            .pattern-content { padding: 12px; }
+            .pattern-content li { font-size: 0.82rem; padding-left: 20px; }
+            .pattern-content h4 { font-size: 0.88rem; }
+
+            .modal-img { min-height: 200px; }
+            .modal-info { padding: 20px 18px; }
+            .modal-info h2 { font-size: 1.55rem; }
+            .modal-price { font-size: 1.5rem; }
+            .btn-modal-add { padding: 12px 20px; font-size: 0.88rem; }
+
+            .qty-control button { width: 30px; height: 30px; font-size: 0.85rem; }
+            .qty-control input { width: 36px; font-size: 0.9rem; }
+
+            .footer-social a { width: 40px; height: 40px; font-size: 0.95rem; }
+            .footer-contact i { width: 32px; height: 32px; font-size: 0.8rem; }
+
+            .cart-item-img { width: 60px; height: 60px; }
+            .cart-item-name { font-size: 0.82rem; }
+            .cart-item-price { font-size: 0.95rem; }
+            .cart-qty button { width: 26px; height: 26px; font-size: 0.75rem; }
+            .cart-qty span { min-width: 22px; font-size: 0.8rem; }
+
+            .btn-checkout { padding: 13px 18px; font-size: 0.92rem; }
+        }
+
+        @media (max-width: 360px) {
+            .logo { font-size: 1.15rem; }
+            .logo .logo-text span { display: none; }
+
+            .product-img { height: 105px; }
+            .product-info h3 { font-size: 0.72rem; }
+            .product-price { font-size: 0.88rem; }
+            .btn-add { font-size: 0.62rem; padding: 6px 6px; }
+
+            .section-title h2 { font-size: 1.5rem; }
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            .product-card:hover {
+                transform: none;
+                box-shadow: 0 5px 20px rgba(255, 182, 193, 0.3);
+            }
+            .product-card:active {
+                transform: scale(0.97);
+                transition: transform 0.15s;
+            }
+            .product-card:hover .product-img img { transform: none; }
+            .pattern-card:hover { transform: none; }
+            nav a:hover::after { width: 0; }
+            .btn-add, .hero-btn, .btn-modal-add, .btn-checkout, .btn-submit-order { min-height: 44px; }
+        }
+
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero { padding: 40px 20px; }
+            .hero h1 { font-size: 2rem; }
+            .product-img { height: 160px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fa-solid fa-heart"></i>
+                <div class="logo-text">
+                    HMB Agency
+                    <span>Handmade with love</span>
+                </div>
+            </div>
+
+            <div class="search-wrapper">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" placeholder="Tìm sản phẩm..." autocomplete="off">
+                    <button class="search-clear" id="searchClear" aria-label="Xóa">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <button class="cart-btn" id="cartBtn" aria-label="Giỏ hàng" onclick="openCart()">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#products">Sản phẩm</a></li>
+                    <li><a href="#patterns">Công thức</a></li>
+                    <li><a href="#about">Về mình</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Đồ Móc Len Xinh Xắn</h1>
+        <p>Từng mũi len được móc tỉ mỉ, mang theo bao yêu thương và nét nữ tính dịu dàng <i class="fa-solid fa-seedling"></i></p>
+        <a href="#products" class="hero-btn">
+            Khám phá ngay <i class="fa-solid fa-heart"></i>
+        </a>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="products" id="products">
+        <div class="section-title">
+            <h2>Sản Phẩm Xinh Xắn</h2>
+            <div class="divider">
+                <span></span>
+                <i class="fa-solid fa-star"></i>
+                <span></span>
+            </div>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <!-- PATTERNS -->
+    <section class="patterns" id="patterns">
+        <div class="section-title">
+            <h2>Công Thức Móc Len</h2>
+            <div class="divider">
+                <span></span>
+                <i class="fa-solid fa-scroll"></i>
+                <span></span>
+            </div>
+            <p style="color: #999; margin-top: 10px; font-size: 0.9rem;">Bấm vào sản phẩm để xem công thức chi tiết <i class="fa-solid fa-seedling" style="color: var(--pink-dark);"></i></p>
+        </div>
+
+        <div class="patterns-container">
+            <div class="pattern-card">
+                <div class="pattern-header">
+                    <div class="pattern-icon"><i class="fa-solid fa-spa"></i></div>
+                    <div>
+                        <h3>Hoa Cúc Len Đơn Giản</h3>
+                        <span class="level"><i class="fa-solid fa-star"></i> Dễ</span>
+                    </div>
+                </div>
+                <p style="color: #999; font-size: 0.88rem;">Bông hoa cúc nhỏ xinh để cài áo hoặc trang trí, chỉ mất 15 phút!</p>
+            </div>
+
+            <div class="pattern-card">
+                <div class="pattern-header">
+                    <div class="pattern-icon"><i class="fa-solid fa-shapes"></i></div>
+                    <div>
+                        <h3>Gấu Bông Mini</h3>
+                        <span class="level"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> Trung bình</span>
+                    </div>
+                </div>
+                <p style="color: #999; font-size: 0.88rem;">Chú gấu nhỏ xinh để bàn hoặc làm quà tặng!</p>
+            </div>
+
+            <div class="pattern-card">
+                <div class="pattern-header">
+                    <div class="pattern-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                    <div>
+                        <h3>Túi Móc Len Mini</h3>
+                        <span class="level"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> Trung bình</span>
+                    </div>
+                </div>
+                <p style="color: #999; font-size: 0.88rem;">Chiếc túi nhỏ xinh để đựng son, điện thoại khi đi chơi!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="section-title">
+            <h2>Về HMB Agency</h2>
+            <div class="divider">
+                <span></span>
+                <i class="fa-solid fa-heart"></i>
+                <span></span>
+            </div>
+        </div>
+        <p>
+            Chào bạn, HMB Agency là thương hiệu yêu thích móc len! <i class="fa-solid fa-seedling" style="color: var(--pink-dark);"></i><br><br>
+            HMB Agency ra đời từ tình yêu với những sợi len mềm mại và mong muốn mang đến những sản phẩm handmade 
+            xinh xắn, nữ tính đến mọi người.<br><br>
+            Hy vọng bạn sẽ tìm được món đồ yêu thích ở đây nhé! <i class="fa-solid fa-heart" style="color: var(--pink-dark);"></i>
+        </p>
+        <div class="hearts">
+            <i class="fa-solid fa-seedling"></i>
+            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-seedling"></i>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3><i class="fa-solid fa-heart"></i> HMB Agency</h3>
+                <p>Handmade with love & care <i class="fa-solid fa-seedling"></i></p>
+                <p>Mỗi sản phẩm là một món quà nhỏ xinh dành tặng bạn.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Liên hệ với mình</h4>
+                <div class="footer-contact">
+                    <a href="tel:0855555140">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Hotline: 0855 555 140</span>
+                    </a>
+                    <a href="mailto:hmb.agency.group@gmail.com">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>hmb.agency.group@gmail.com</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Theo dõi mình</h4>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2024 HMB Agency. All rights reserved. Made with <i class="fa-solid fa-heart"></i></p>
+        </div>
+    </footer>
+
+    <!-- MODAL CHI TIẾT SẢN PHẨM -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modalContent"></div>
+    </div>
+
+    <!-- CART SIDEBAR -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2><i class="fa-solid fa-bag-shopping"></i> Giỏ hàng</h2>
+            <button class="cart-close" onclick="closeCart()" aria-label="Đóng">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="cart-body" id="cartBody"></div>
+        <div class="cart-footer" id="cartFooter"></div>
+    </aside>
+
+    <!-- CHECKOUT MODAL -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-box" id="checkoutBox"></div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-heart"></i>
+        <span id="toast-text">Đã thêm vào giỏ hàng!</span>
+    </div>
+
+    <script>
+        /* =========================================================
+           DỮ LIỆU SẢN PHẨM
+           ========================================================= */
+        const IMAGES = [
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSULLKZ6ieHSJxgftNMGQNo4AeHiS911G8rLTXBx3IKmOXOSPh1PUYy3JTO&s=10',
+            'https://lanhworkshop.com/wp-content/uploads/2024/06/moc-len-hinh-thu.png.webp',
+            'https://cdn.tgdd.vn/Files/2022/02/15/1415623/cach-phan-biet-dan-len-va-moc-len-cho-nguoi-moi-bat-dau-202202150042419384.jpg',
+            'https://img.lazcdn.com/g/ff/kf/S2efef8a3416a400e9f69519a8b3e6e9d9.jpg_720x720q80.jpg'
+        ];
+
+        const PRODUCTS = [
+            {
+                id: 1, name: 'Gấu Bông Móc Len', price: 150000, priceText: '150.000đ',
+                desc: 'Chú gấu nhỏ xinh mềm mại, ôm cực thích',
+                badge: 'Mới', badgeType: '',
+                pattern: {
+                    level: 'Trung bình',
+                    materials: ['Len cotton màu nâu, trắng, đen', 'Kim móc 2.5mm hoặc 3.0mm', 'Bông gòn nhồi, kim khâu, mắt thú'],
+                    steps: [
+                        'PHẦN ĐẦU: Magic ring 6sc, tăng dần lên 36 mũi qua 4 vòng, sau đó giảm dần về 6 mũi, nhồi bông',
+                        'PHẦN THÂN: Magic ring 6sc, tăng lên 30 mũi, móc 8 vòng đều, giảm dần, nhồi bông, khâu vào đầu',
+                        'TAI (x2): Magic ring 6sc, tăng lên 12 mũi, móc 2 vòng đều, khâu vào đầu',
+                        'TAY (x2): Magic ring 6sc, móc 5 vòng đều, nhồi nhẹ, khâu vào thân',
+                        'CHÂN (x2): Magic ring 6sc, tăng lên 12 mũi, móc 3 vòng, khâu vào thân',
+                        'MÕM: Dùng len trắng móc hình oval nhỏ, khâu vào mặt',
+                        'HOÀN THIỆN: Gắn mắt thú, thêu mũi miệng bằng len đen'
+                    ],
+                    tips: ['Đánh dấu mũi đầu tiên bằng marker để không bị lệch', 'Nhồi bông vừa phải để gấu tròn đẹp', 'Khâu các bộ phận bằng kim khâu len để chắc chắn']
+                }
+            },
+            {
+                id: 2, name: 'Hoa Len Cài Áo', price: 35000, priceText: '35.000đ',
+                desc: 'Bông hoa nhỏ xinh điểm tô cho outfit thêm nữ tính',
+                badge: 'Hot', badgeType: 'hot',
+                pattern: {
+                    level: 'Dễ',
+                    materials: ['Len sợi cotton màu vàng và trắng', 'Kim móc số 3.0mm', 'Kéo, kim khâu len'],
+                    steps: [
+                        'Tạo vòng tròn ma thuật (magic ring) với len vàng',
+                        'Móc 8 mũi đơn (sc) vào vòng tròn, kéo chặt',
+                        'Móc 2 mũi đơn vào mỗi mũi = 16 mũi',
+                        'Móc 1 mũi đơn, 2 mũi đơn vào mũi kế tiếp = 24 mũi',
+                        'Đổi sang len trắng, móc 5 bính (ch), mũi kép (dc) vào mũi tiếp, 5 bính, mũi trượt (sl st) vào mũi kế',
+                        'Lặp lại bước 5 cho đến hết vòng tròn để tạo cánh hoa',
+                        'Cắt len, khâu giấu đầu chỉ'
+                    ],
+                    tips: ['Móc đều tay để cánh hoa đẹp hơn', 'Có thể dùng len nhiều màu để làm bó hoa xinh', 'Nếu muốn hoa to hơn, tăng thêm số vòng mũi đơn']
+                }
+            },
+            {
+                id: 3, name: 'Túi Móc Len Mini', price: 180000, priceText: '180.000đ',
+                desc: 'Túi nhỏ xách tay đáng yêu, đựng được nhiều đồ xinh',
+                badge: '', badgeType: '',
+                pattern: {
+                    level: 'Trung bình',
+                    materials: ['Len cotton màu hồng pastel', 'Kim móc 3.5mm', 'Dây đeo túi, khóa túi (nếu muốn)', 'Vải lót (tùy chọn)'],
+                    steps: [
+                        'Móc 20 bính (ch) làm đáy túi',
+                        'Móc mũi đơn (sc) dọc theo 2 bên và đáy = khoảng 40 mũi',
+                        'Móc 15 vòng mũi đơn đều nhau để tạo thân túi',
+                        'Đổi màu len (nếu muốn) móc thêm 3 vòng nữa',
+                        'Móc viền túi: 1 vòng mũi đơn + 1 vòng mũi trượt',
+                        'Làm quai túi: móc dây bính dài khoảng 100cm, khâu vào 2 bên túi',
+                        'Trang trí thêm hoa len hoặc nơ xinh'
+                    ],
+                    tips: ['Dùng len cotton để túi đứng form hơn', 'Có thể lót vải bên trong để túi chắc chắn', 'Trang trí thêm charm, nơ để túi thêm xinh']
+                }
+            },
+            {
+                id: 4, name: 'Thỏ Bông Móc Len', price: 140000, priceText: '140.000đ',
+                desc: 'Bé thỏ trắng muốt, tai dài đáng yêu',
+                badge: 'Mới', badgeType: '',
+                pattern: {
+                    level: 'Trung bình',
+                    materials: ['Len cotton màu trắng, hồng nhạt', 'Kim móc 2.5mm', 'Bông gòn nhồi, mắt thú đen, kim khâu'],
+                    steps: [
+                        'ĐẦU: Magic ring 6sc, tăng lên 30 mũi, móc 5 vòng đều, giảm dần về 6 mũi, nhồi bông',
+                        'THÂN: Magic ring 6sc, tăng lên 24 mũi, móc 7 vòng đều, giảm dần, khâu vào đầu',
+                        'TAI DÀI (x2): Magic ring 5sc, tăng lên 10 mũi, móc 12 vòng đều, không nhồi bông',
+                        'TAY (x2): Magic ring 6sc, móc 6 vòng đều, nhồi nhẹ',
+                        'CHÂN (x2): Magic ring 6sc, tăng lên 12 mũi, móc 4 vòng',
+                        'MŨI: Thêu mũi X nhỏ bằng len hồng',
+                        'HOÀN THIỆN: Gắn mắt thú, khâu các bộ phận lại'
+                    ],
+                    tips: ['Tai thỏ không nhồi bông để giữ form dài đẹp', 'Dùng len trắng cotton để thỏ trắng sáng đẹp', 'Có thể thêm nơ nhỏ ở cổ cho thỏ thêm xinh']
+                }
+            },
+            {
+                id: 5, name: 'Móc Khóa Len', price: 25000, priceText: '25.000đ',
+                desc: 'Móc khóa nhỏ xinh treo balo, chìa khóa cực yêu',
+                badge: '', badgeType: '',
+                pattern: {
+                    level: 'Dễ',
+                    materials: ['Len cotton nhiều màu', 'Kim móc 2.5mm', 'Móc khóa kim loại, bông gòn'],
+                    steps: [
+                        'Chọn hình dạng muốn móc (tròn, tim, ngôi sao...)',
+                        'Magic ring 6sc, tăng dần tùy hình',
+                        'Móc 2 miếng giống nhau, úp mặt trái vào nhau',
+                        'Móc viền xung quanh bằng mũi đơn, nhồi bông',
+                        'Gắn móc khóa vào phần trên',
+                        'Cắt len, khâu giấu chỉ'
+                    ],
+                    tips: ['Làm nhiều cái nhỏ để làm charm điện thoại', 'Dùng len acrylic bền màu hơn', 'Có thể thêu tên lên móc khóa làm quà']
+                }
+            },
+            {
+                id: 6, name: 'Bó Hoa Len', price: 220000, priceText: '220.000đ',
+                desc: 'Bó hoa len không bao giờ tàn, tặng mãi mãi yêu',
+                badge: 'Hot', badgeType: 'hot',
+                pattern: {
+                    level: 'Trung bình',
+                    materials: ['Len cotton nhiều màu', 'Kim móc 3.0mm', 'Kẽm cành hoa, băng keo cành, giấy gói'],
+                    steps: [
+                        'Móc 5-7 bông hoa theo mẫu hoa cúc',
+                        'Móc lá xanh: magic ring 6sc, móc hình oval',
+                        'Gắn hoa và lá vào kẽm cành',
+                        'Quấn băng keo cành để giấu kẽm',
+                        'Bó hoa lại, gói giấy và thắt nơ',
+                        'Trang trí thêm charm hoặc thiệp nhỏ'
+                    ],
+                    tips: ['Dùng nhiều màu len để bó hoa rực rỡ', 'Có thể làm hoa hồng, hoa tulip thay vì hoa cúc', 'Bó hoa len để được mãi mãi, không lo tàn']
+                }
+            },
+            {
+                id: 7, name: 'Charm Dâu Tây', price: 30000, priceText: '30.000đ',
+                desc: 'Charm dâu tây nhỏ xinh treo điện thoại, chìa khóa',
+                badge: 'Mới', badgeType: '',
+                pattern: {
+                    level: 'Dễ',
+                    materials: ['Len cotton màu đỏ, xanh lá', 'Kim móc 2.5mm', 'Móc khóa, bông gòn nhồi'],
+                    steps: [
+                        'Magic ring 6sc với len đỏ',
+                        'Tăng lên 12 mũi, rồi 18 mũi',
+                        'Móc 2 vòng đều 18 mũi',
+                        'Giảm dần về 6 mũi, nhồi bông gòn',
+                        'Khâu kín lại',
+                        'Dùng len xanh móc 5 bính, mũi trượt tạo lá, khâu lên đỉnh dâu',
+                        'Gắn móc khóa vào'
+                    ],
+                    tips: ['Thêu thêm hạt trắng lên dâu cho sinh động', 'Làm nhiều quả dâu để làm charm điện thoại', 'Dùng len acrylic để sản phẩm bền màu hơn']
+                }
+            },
+            {
+                id: 8, name: 'Kẹp Tóc Len', price: 40000, priceText: '40.000đ',
+                desc: 'Kẹp tóc len xinh xắn, điệu đà cho các nàng',
+                badge: '', badgeType: '',
+                pattern: {
+                    level: 'Dễ',
+                    materials: ['Len cotton màu pastel', 'Kim móc 2.5mm', 'Kẹp tóc kim loại trơn'],
+                    steps: [
+                        'Móc 1 bông hoa nhỏ theo mẫu hoa cúc',
+                        'Móc 2 chiếc lá xanh nhỏ',
+                        'Khâu hoa và lá vào kẹp tóc',
+                        'Dùng keo nến hoặc chỉ khâu cố định',
+                        'Trang trí thêm hạt ngọc nhỏ nếu thích'
+                    ],
+                    tips: ['Chọn màu len hợp với màu tóc', 'Làm theo cặp để kẹp 2 bên đối xứng', 'Có thể làm kẹp hình bướm, trái tim...']
+                }
+            },
+            {
+                id: 9, name: 'Gối Ôm Len', price: 350000, priceText: '350.000đ',
+                desc: 'Gối ôm len mềm mại, trang trí phòng thêm xinh',
+                badge: 'Hot', badgeType: 'hot',
+                pattern: {
+                    level: 'Khó',
+                    materials: ['Len cotton loại to', 'Kim móc 5.0-6.0mm', 'Vỏ gối hoặc bông nhồi'],
+                    steps: [
+                        'Móc 2 miếng vuông/chữ nhật cùng kích thước',
+                        'Móc mũi đơn đều tay để mặt phẳng đẹp',
+                        'Úp 2 mặt trái vào nhau, móc viền xung quanh',
+                        'Chừa 1 đoạn để nhồi bông hoặc vỏ gối',
+                        'Khâu kín lại, trang trí hoa len lên mặt gối',
+                        'Có thể móc chữ cái hoặc hình yêu thích'
+                    ],
+                    tips: ['Dùng len to để gối nhanh hoàn thành', 'Móc đều tay để gối phẳng đẹp', 'Làm gối ôm hình thú cưng cũng rất dễ thương']
+                }
+            },
+            {
+                id: 10, name: 'Lót Ly Len', price: 45000, priceText: '45.000đ',
+                desc: 'Lót ly len xinh xắn, bảo vệ bàn khỏi vết nước',
+                badge: '', badgeType: '',
+                pattern: {
+                    level: 'Dễ',
+                    materials: ['Len cotton nhiều màu', 'Kim móc 3.0mm', 'Kéo'],
+                    steps: [
+                        'Magic ring 6sc với len chính',
+                        'Tăng lên 12 mũi, rồi 24 mũi',
+                        'Móc 1 vòng mũi đơn đều',
+                        'Móc viền bằng mũi móc đơn hoặc mũi picot',
+                        'Cắt len, khâu giấu chỉ',
+                        'Có thể móc nhiều cái để bộ lót ly đồng bộ'
+                    ],
+                    tips: ['Dùng len cotton để thấm nước tốt hơn', 'Phối màu để bộ lót ly đẹp mắt', 'Làm thành bộ 4-6 cái để làm quà']
+                }
+            },
+            {
+                id: 11, name: 'Búp Bê Len', price: 280000, priceText: '280.000đ',
+                desc: 'Búp bê len đáng yêu, món quà tặng ý nghĩa',
+                badge: 'Mới', badgeType: '',
+                pattern: {
+                    level: 'Khó',
+                    materials: ['Len cotton màu da, tóc, quần áo', 'Kim móc 2.5mm', 'Bông gòn, mắt thú, kim khâu'],
+                    steps: [
+                        'ĐẦU: Magic ring 6sc, tăng lên 30 mũi, móc 6 vòng đều, giảm dần',
+                        'THÂN: Móc từ cổ xuống, tạo form váy hoặc áo',
+                        'TAY (x2): Móc dài, khâu vào thân',
+                        'CHÂN (x2): Móc dài, khâu vào thân',
+                        'TÓC: Móc từng sợi len dài, khâu lên đầu',
+                        'MẶT: Gắn mắt, thêu mũi miệng hồng',
+                        'QUẦN ÁO: Móc riêng rồi mặc vào búp bê'
+                    ],
+                    tips: ['Móc đều tay để búp bê cân đối', 'Chọn màu tóc hợp với trang phục', 'Có thể làm nhiều bộ quần áo để thay đổi']
+                }
+            },
+            {
+                id: 12, name: 'Khăn Len', price: 320000, priceText: '320.000đ',
+                desc: 'Khăn len ấm áp, móc tỉ mỉ cho mùa đông',
+                badge: '', badgeType: '',
+                pattern: {
+                    level: 'Trung bình',
+                    materials: ['Len sợi to màu yêu thích', 'Kim móc 5.0mm', 'Kéo'],
+                    steps: [
+                        'Móc 30-40 bính tùy độ rộng mong muốn',
+                        'Móc hàng 1: mũi đơn trên mỗi bính',
+                        'Các hàng tiếp: mũi đơn, có thể đổi màu',
+                        'Móc đến độ dài mong muốn (khoảng 1.5m)',
+                        'Móc tua rua 2 đầu khăn',
+                        'Cắt len, khâu giấu chỉ'
+                    ],
+                    tips: ['Dùng len to móc nhanh và ấm', 'Đổi màu tạo sọc cho khăn sinh động', 'Móc khăn làm quà tặng mùa đông rất ý nghĩa']
+                }
+            }
+        ];
+
+        /* =========================================================
+           XÁO TRỘN ẢNH
+           ========================================================= */
+        function shuffle(arr) {
+            const a = [...arr];
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        let imagePool = [];
+        function initImagePool() {
+            imagePool = shuffle(IMAGES);
+            while (imagePool.length < PRODUCTS.length) {
+                imagePool = imagePool.concat(shuffle(IMAGES));
+            }
+        }
+
+        function getProductImage(productId) {
+            return imagePool[productId - 1] || IMAGES[(productId - 1) % IMAGES.length];
+        }
+
+        /* =========================================================
+           FORMAT GIÁ
+           ========================================================= */
+        function formatPrice(num) {
+            return num.toLocaleString('vi-VN') + 'đ';
+        }
+
+        /* =========================================================
+           RENDER SẢN PHẨM
+           ========================================================= */
+        const productGrid = document.getElementById('productGrid');
+
+        function renderProducts(list) {
+            if (list.length === 0) {
+                productGrid.innerHTML = `
+                    <div class="no-results">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <h3>Không tìm thấy sản phẩm</h3>
+                        <p>Thử từ khóa khác nhé bạn ơi!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            productGrid.innerHTML = list.map((p) => `
+                <div class="product-card" onclick="openModal(${p.id})">
+                    <div class="product-img">
+                        <img src="${getProductImage(p.id)}" 
+                             alt="${p.name}" loading="lazy"
+                             onerror="this.onerror=null;this.src='${IMAGES[0]}'">
+                        ${p.badge ? `<span class="product-badge ${p.badgeType}">${p.badge}</span>` : ''}
+                    </div>
+                    <div class="product-info">
+                        <h3>${p.name}</h3>
+                        <p>${p.desc}</p>
+                        <div class="product-bottom">
+                            <span class="product-price">${p.priceText}</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAdd(${p.id})">
+                                Thêm <i class="fa-solid fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        /* =========================================================
+           TÌM KIẾM
+           ========================================================= */
+        const searchInput = document.getElementById('searchInput');
+        const searchClear = document.getElementById('searchClear');
+
+        function filterProducts() {
+            const keyword = searchInput.value.toLowerCase().trim();
+            searchClear.classList.toggle('show', !!keyword);
+
+            if (!keyword) {
+                renderProducts(PRODUCTS);
+                return;
+            }
+
+            const filtered = PRODUCTS.filter(p => 
+                p.name.toLowerCase().includes(keyword) || 
+                p.desc.toLowerCase().includes(keyword)
+            );
+            renderProducts(filtered);
+        }
+
+        searchInput.addEventListener('input', filterProducts);
+        searchClear.addEventListener('click', () => {
+            searchInput.value = '';
+            filterProducts();
+            searchInput.focus();
+        });
+
+        /* =========================================================
+           MODAL CHI TIẾT SẢN PHẨM
+           ========================================================= */
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalContent = document.getElementById('modalContent');
+
+        function openModal(productId) {
+            const p = PRODUCTS.find(x => x.id === productId);
+            if (!p) return;
+
+            modalContent.innerHTML = `
+                <button class="modal-close" onclick="closeModal()" aria-label="Đóng">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="modal-body">
+                    <div class="modal-img">
+                        <img src="${getProductImage(p.id)}" alt="${p.name}"
+                             onerror="this.onerror=null;this.src='${IMAGES[0]}'">
+                    </div>
+                    <div class="modal-info">
+                        ${p.badge ? `<span class="modal-badge">${p.badge}</span>` : ''}
+                        <h2>${p.name}</h2>
+                        <p class="modal-desc">${p.desc}</p>
+                        <div class="modal-price">${p.priceText}</div>
+
+                        <div class="qty-selector">
+                            <label>Số lượng:</label>
+                            <div class="qty-control">
+                                <button type="button" onclick="changeModalQty(-1)" aria-label="Giảm">−</button>
+                                <input type="number" id="modalQty" value="1" min="1" max="99" readonly>
+                                <button type="button" onclick="changeModalQty(1)" aria-label="Tăng">+</button>
+                            </div>
+                        </div>
+
+                        <div class="modal-actions">
+                            <button class="btn-modal-add" onclick="addFromModal(${p.id})">
+                                <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="modal-pattern">
+                        <div class="modal-pattern-header">
+                            <i class="fa-solid fa-scroll"></i>
+                            <h3>Công Thức Móc Len</h3>
+                        </div>
+                        <div class="modal-pattern-content">
+                            <h4><i class="fa-solid fa-star"></i> Độ khó: ${p.pattern.level}</h4>
+
+                            <h4><i class="fa-solid fa-list-check"></i> Nguyên liệu cần chuẩn bị:</h4>
+                            <ul>${p.pattern.materials.map(m => `<li>${m}</li>`).join('')}</ul>
+
+                            <h4><i class="fa-solid fa-hands"></i> Các bước thực hiện:</h4>
+                            <ul>${p.pattern.steps.map(s => `<li>${s}</li>`).join('')}</ul>
+
+                            <h4><i class="fa-solid fa-lightbulb"></i> Mẹo nhỏ:</h4>
+                            <ul>${p.pattern.tips.map(t => `<li>${t}</li>`).join('')}</ul>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            modalOverlay.classList.add('active');
+            document.body.classList.add('no-scroll');
+        }
+
+        function changeModalQty(delta) {
+            const input = document.getElementById('modalQty');
+            if (!input) return;
+            let val = parseInt(input.value) + delta;
+            if (val < 1) val = 1;
+            if (val > 99) val = 99;
+            input.value = val;
+        }
+
+        function addFromModal(productId) {
+            const qty = parseInt(document.getElementById('modalQty').value) || 1;
+            addToCart(productId, qty);
+            closeModal();
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+                closeCart();
+                closeCheckout();
+            }
+        });
+
+        /* =========================================================
+           GIỎ HÀNG - localStorage
+           ========================================================= */
+        const CART_KEY = 'hmb_cart_v1';
+        let cart = [];
+
+        function loadCart() {
+            try {
+                const saved = localStorage.getItem(CART_KEY);
+                cart = saved ? JSON.parse(saved) : [];
+            } catch (e) {
+                cart = [];
+            }
+        }
+
+        function saveCart() {
+            try {
+                localStorage.setItem(CART_KEY, JSON.stringify(cart));
+            } catch (e) {}
+        }
+
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.qty, 0);
+            const badge = document.getElementById('cartCount');
+            badge.textContent = count > 99 ? '99+' : count;
+            badge.classList.toggle('show', count > 0);
+        }
+
+        function quickAdd(productId) {
+            addToCart(productId, 1);
+        }
+
+        function addToCart(productId, qty = 1) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            if (!product) return;
+
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.qty = Math.min(existing.qty + qty, 99);
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    priceText: product.priceText,
+                    qty: qty
+                });
+            }
+
+            saveCart();
+            updateCartCount();
+            renderCart();
+            showToast(`Đã thêm "${product.name}" vào giỏ!`);
+        }
+
+        function updateQty(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (!item) return;
+
+            item.qty += delta;
+            if (item.qty < 1) item.qty = 1;
+            if (item.qty > 99) item.qty = 99;
+
+            saveCart();
+            updateCartCount();
+            renderCart();
+            if (document.getElementById('checkoutModal').classList.contains('active')) {
+                renderCheckout();
+            }
+        }
+
+        function removeFromCart(productId) {
+            const item = cart.find(i => i.id === productId);
+            cart = cart.filter(i => i.id !== productId);
+            saveCart();
+            updateCartCount();
+            renderCart();
+            if (item) showToast(`Đã xóa "${item.name}" khỏi giỏ`);
+            if (document.getElementById('checkoutModal').classList.contains('active')) {
+                if (cart.length === 0) closeCheckout();
+                else renderCheckout();
+            }
+        }
+
+        function clearCart() {
+            if (cart.length === 0) return;
+            if (!confirm('Bạn có chắc muốn xóa toàn bộ giỏ hàng?')) return;
+            cart = [];
+            saveCart();
+            updateCartCount();
+            renderCart();
+            showToast('Đã xóa toàn bộ giỏ hàng');
+        }
+
+        function getCartTotal() {
+            return cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+        }
+
+        /* =========================================================
+           RENDER CART
+           ========================================================= */
+        const cartBody = document.getElementById('cartBody');
+        const cartFooter = document.getElementById('cartFooter');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartSidebar = document.getElementById('cartSidebar');
+
+        function renderCart() {
+            if (cart.length === 0) {
+                cartBody.innerHTML = `
+                    <div class="cart-empty">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <h3>Giỏ hàng trống</h3>
+                        <p>Thêm sản phẩm xinh xắn vào giỏ nhé!</p>
+                    </div>
+                `;
+                cartFooter.innerHTML = '';
+                return;
+            }
+
+            cartBody.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-img">
+                        <img src="${getProductImage(item.id)}" alt="${item.name}"
+                             onerror="this.onerror=null;this.src='${IMAGES[0]}'">
+                    </div>
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">${formatPrice(item.price * item.qty)}</div>
+                        <div class="cart-item-controls">
+                            <div class="cart-qty">
+                                <button type="button" onclick="updateQty(${item.id}, -1)" aria-label="Giảm">−</button>
+                                <span>${item.qty}</span>
+                                <button type="button" onclick="updateQty(${item.id}, 1)" aria-label="Tăng">+</button>
+                            </div>
+                            <button class="cart-item-remove" onclick="removeFromCart(${item.id})" aria-label="Xóa">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            cartFooter.innerHTML = `
+                <div class="cart-total">
+                    <span class="cart-total-label">Tổng cộng:</span>
+                    <span class="cart-total-price">${formatPrice(getCartTotal())}</span>
+                </div>
+                <button class="btn-checkout" onclick="openCheckout()">
+                    <i class="fa-solid fa-credit-card"></i> Thanh toán
+                </button>
+                <button class="btn-clear-cart" onclick="clearCart()">
+                    <i class="fa-solid fa-trash"></i> Xóa toàn bộ
+                </button>
+            `;
+        }
+
+        function openCart() {
+            cartOverlay.classList.add('active');
+            cartSidebar.classList.add('active');
+            document.body.classList.add('no-scroll');
+            renderCart();
+        }
+
+        function closeCart() {
+            cartOverlay.classList.remove('active');
+            cartSidebar.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+
+        /* =========================================================
+           CHECKOUT
+           ========================================================= */
+        const checkoutModal = document.getElementById('checkoutModal');
+        const checkoutBox = document.getElementById('checkoutBox');
+
+        function openCheckout() {
+            if (cart.length === 0) {
+                showToast('Giỏ hàng trống, không thể thanh toán');
+                return;
+            }
+            closeCart();
+            renderCheckout();
+            checkoutModal.classList.add('active');
+            document.body.classList.add('no-scroll');
+        }
+
+        function closeCheckout() {
+            checkoutModal.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+
+        function renderCheckout() {
+            const total = getCartTotal();
+            checkoutBox.innerHTML = `
+                <div class="checkout-header">
+                    <h2><i class="fa-solid fa-credit-card"></i> Thanh Toán</h2>
+                    <button class="checkout-close" onclick="closeCheckout()" aria-label="Đóng">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="checkout-body">
+                    <div class="checkout-summary">
+                        <h3><i class="fa-solid fa-bag-shopping"></i> Đơn hàng của bạn</h3>
+                        ${cart.map(item => `
+                            <div class="summary-item">
+                                <span class="summary-item-name">${item.name}</span>
+                                <span class="summary-item-qty">×${item.qty}</span>
+                                <span class="summary-item-price">${formatPrice(item.price * item.qty)}</span>
+                            </div>
+                        `).join('')}
+                        <div class="summary-total">
+                            <span class="summary-total-label">Tổng cộng:</span>
+                            <span class="summary-total-price">${formatPrice(total)}</span>
+                        </div>
+                    </div>
+
+                    <form class="checkout-form" id="checkoutForm" onsubmit="submitOrder(event)">
+                        <h3><i class="fa-solid fa-user"></i> Thông tin giao hàng</h3>
+
+                        <div class="form-group">
+                            <label>Họ và tên <span class="required">*</span></label>
+                            <input type="text" id="customerName" required placeholder="Nguyễn Thị A">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Số điện thoại <span class="required">*</span></label>
+                                <input type="tel" id="customerPhone" required placeholder="0912345678" pattern="[0-9]{10,11}">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="customerEmail" placeholder="email@example.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Địa chỉ giao hàng <span class="required">*</span></label>
+                            <input type="text" id="customerAddress" required placeholder="Số nhà, đường, phường, quận, thành phố">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Ghi chú</label>
+                            <textarea id="customerNote" placeholder="Yêu cầu đặc biệt, thời gian giao hàng..."></textarea>
+                        </div>
+
+                        <h3 style="margin-top: 25px;"><i class="fa-solid fa-wallet"></i> Phương thức thanh toán</h3>
+                        <div class="payment-methods">
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="cod" checked>
+                                <label><i class="fa-solid fa-money-bill-wave"></i> Thanh toán khi nhận hàng (COD)</label>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="bank">
+                                <label><i class="fa-solid fa-building-columns"></i> Chuyển khoản ngân hàng</label>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="momo">
+                                <label><i class="fa-solid fa-mobile-screen"></i> Ví MoMo / ZaloPay</label>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-submit-order">
+                            <i class="fa-solid fa-check"></i> Đặt hàng - ${formatPrice(total)}
+                        </button>
+                    </form>
+                </div>
+            `;
+        }
+
+        function submitOrder(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('customerName').value.trim();
+            const phone = document.getElementById('customerPhone').value.trim();
+            const address = document.getElementById('customerAddress').value.trim();
+            const payment = document.querySelector('input[name="payment"]:checked').value;
+
+            if (!name || !phone || !address) {
+                showToast('Vui lòng điền đầy đủ thông tin!');
+                return;
+            }
+
+            // Tạo mã đơn hàng
+            const orderCode = 'HMB' + Date.now().toString().slice(-6);
+
+            // Ở đây thực tế sẽ gửi lên server. Demo: hiển thị thành công.
+            showSuccess(orderCode, name, phone, address, payment);
+        }
+
+        function showSuccess(orderCode, name, phone, address, payment) {
+            const paymentText = {
+                cod: 'Thanh toán khi nhận hàng (COD)',
+                bank: 'Chuyển khoản ngân hàng',
+                momo: 'Ví MoMo / ZaloPay'
+            }[payment] || payment;
+
+            checkoutBox.innerHTML = `
+                <div class="success-box">
+                    <div class="success-icon">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h2>Đặt Hàng Thành Công!</h2>
+                    <p>Cảm ơn <strong>${name}</strong> đã tin yêu HMB Agency <i class="fa-solid fa-heart" style="color: var(--pink-dark);"></i></p>
+                    <p>Chúng mình sẽ liên hệ qua SĐT <strong>${phone}</strong> để xác nhận đơn hàng.</p>
+                    <div class="order-code">Mã đơn: ${orderCode}</div>
+                    <p style="font-size: 0.85rem;"><strong>Giao đến:</strong> ${address}</p>
+                    <p style="font-size: 0.85rem; margin-bottom: 20px;"><strong>Thanh toán:</strong> ${paymentText}</p>
+                    <button class="btn-success-close" onclick="finishOrder()">
+                        <i class="fa-solid fa-heart"></i> Hoàn tất
+                    </button>
+                </div>
+            `;
+
+            // Xóa giỏ hàng
+            cart = [];
+            saveCart();
+            updateCartCount();
+            renderCart();
+
+            // Log đơn hàng (demo)
+            console.log('📦 Đơn hàng mới:', {
+                orderCode, name, phone, address, payment,
+                items: JSON.parse(localStorage.getItem(CART_KEY) || '[]')
+            });
+        }
+
+        function finishOrder() {
+            closeCheckout();
+            showToast('Cảm ơn bạn đã đặt hàng! 💕');
+        }
+
+        /* =========================================================
+           TOAST
+           ========================================================= */
+        let toastTimer;
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-text').textContent = message;
+            toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        /* =========================================================
+           HAMBURGER
+           ========================================================= */
+        const hamburger = document.getElementById('hamburger');
+        const mainNav = document.getElementById('mainNav');
+        const navLinks = mainNav.querySelectorAll('a');
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            hamburger.classList.toggle('active');
+            mainNav.classList.toggle('open');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mainNav.classList.remove('open');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!mainNav.contains(e.target) && !hamburger.contains(e.target)) {
+                hamburger.classList.remove('active');
+                mainNav.classList.remove('open');
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                hamburger.classList.remove('active');
+                mainNav.classList.remove('open');
+            }
+        });
+
+        /* =========================================================
+           SMOOTH SCROLL
+           ========================================================= */
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+
+        /* =========================================================
+           KHỞI TẠO
+           ========================================================= */
+        document.addEventListener('DOMContentLoaded', () => {
+            initImagePool();
+            loadCart();
+            renderProducts(PRODUCTS);
+            updateCartCount();
+            renderCart();
+        });
+
+        window.addEventListener('load', () => {
+            initImagePool();
+            renderProducts(PRODUCTS);
+        });
+    </script>
+
+</body>
+</html>
